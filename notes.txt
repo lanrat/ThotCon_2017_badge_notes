@@ -1,0 +1,7 @@
+screen /dev/ttyACM0 9600
+
+avrdude -p m32u4 -c usbtiny -U flash:r:dump.hex:r
+
+srec_cat dump.bin -binary -o dump.hex -intel
+
+avr-objdump -m avr5 -D dump.hex 
